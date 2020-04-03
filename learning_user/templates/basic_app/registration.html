@@ -1,0 +1,21 @@
+{% extends "basic_app/base.html" %}
+{% load static %}
+{% block body_block %}
+
+<div class="jumbotron">
+
+  {% if registered %}               #registered variable is sended from views.register
+    <h1>Thankyou for registering</h1>
+    {% else %}
+      <h3>Fill out the form: </h3>
+      <form enctype="multipart/form-data" method="post">  #enctype for image uploading work
+        {% csrf_token %}
+        {{ user_form.as_p }}
+        {{ profile_form.as_p }}
+        <input type="submit"  value="Register">
+      </form>
+  {% endif %}
+</div>
+
+
+{% endblock %}
